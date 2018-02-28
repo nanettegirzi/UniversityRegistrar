@@ -15,19 +15,56 @@ namespace UniversityRegistrar.Tests
         public void Dispose()
         {
             Student.DeleteAll();
-            // Course.DeleteAll();
+            Course.DeleteAll();
         }
 
         [TestMethod]
         public void Equals_OverrideTrueForSameName_Student()
         {
-          //Arrange, Act
-         Student firstStudent = new Student("Nanette Girzi", "Jan 1");
-         Student secondStudent = new Student("Nanette Girzi", "Jan 1");
+            //Arrange, Act
+            Student firstStudent = new Student("Nanette Girzi", "Jan 1");
+            Student secondStudent = new Student("Nanette Girzi", "Jan 1");
 
-          //Assert
-          Assert.AreEqual(firstStudent, secondStudent);
+            //Assert
+            Assert.AreEqual(firstStudent, secondStudent);
         }
+
+        [TestMethod]
+        public void GetName_ReturnsName_String()
+        {
+            string studentName = "Sue Smith";
+            string enrollmentDate = "Jan 1";
+            Student newStudent = new Student(studentName, enrollmentDate);
+
+            string result = newStudent.GetName();
+
+            Assert.AreEqual(studentName, result);
+        }
+
+        [TestMethod]
+        public void GetEnrollmentDate_ReturnsEnrollmentDate_String()
+        {
+            string studentName = "Sue Smith";
+            string enrollmentDate = "Jan 1";
+            Student newStudent = new Student(studentName, enrollmentDate);
+
+            string result = newStudent.GetEnrollmentDate();
+
+            Assert.AreEqual(enrollmentDate, result);
+        }
+
+        [TestMethod]
+        public void Save_SavesStudentToDatabase_StudentList()
+        {
+            Student testStudent = new Student("Jen Brown", "Jan 1");
+            testStudent.Save();
+            //Act
+            List<Student> result = Student.GetAll();
+            List<Student> testList = new List<Student>{testStudent};
+
+            CollectionAssert.AreEqual(testList, result);
+        }
+
 
         [TestMethod]
         public void GetAll_StudentsEmptyAtFirst_0()
@@ -58,76 +95,37 @@ namespace UniversityRegistrar.Tests
             CollectionAssert.AreEqual(newStudent, result);
         }
 
-
-        [TestMethod]
-        public void GetName_ReturnsName_String()
-        {
-            string studentName = "Sue Smith";
-            string enrollmentDate = "Jan 1";
-            Student newStudent = new Student(studentName, enrollmentDate);
-
-            string result = newStudent.GetName();
-
-            Assert.AreEqual(studentName, result);
-        }
-
-        [TestMethod]
-        public void GetEnrollmentDate_ReturnsEnrollmentDate_String()
-        {
-            string studentName = "Sue Smith";
-            string enrollmentDate = "Jan 1";
-            Student newStudent = new Student(studentName, enrollmentDate);
-
-            string result = newStudent.GetEnrollmentDate();
-
-            Assert.AreEqual(enrollmentDate, result);
-        }
-
-        [TestMethod]
-        public void Save_SavesStudentToDatabase_StudentList()
-        {
-          Student testStudent = new Student("Jen Brown", "Jan 1");
-          testStudent.Save();
-          //Act
-          List<Student> result = Student.GetAll();
-          List<Student> testList = new List<Student>{testStudent};
-
-          CollectionAssert.AreEqual(testList, result);
-        }
-
-
-
         public void Find_FindsStudentinDatabase_Student()
         {
             //Arrange
-          Student testStudent = new Student("Joe Miller", "Jan 5");
-          testStudent.Save();
+            Student testStudent = new Student("Joe Miller", "Jan 5");
+            testStudent.Save();
 
-          //Act
-          Student foundStudent = Student.Find(testStudent.GetId());
+            //Act
+            Student foundStudent = Student.Find(testStudent.GetId());
 
-          //Assert
-          Assert.AreEqual(testStudent, foundStudent);
+            //Assert
+            Assert.AreEqual(testStudent, foundStudent);
         }
 
         [TestMethod]
         public void Edit_UpdatesStudentInDatabase_String()
         {
             //Arrange
-                string firstName = "John Smith";
-                string firstEnrollmentDate = "Jan 8";
-                Student testStudent = new Student(firstName, firstEnrollmentDate);
-                testStudent.Save();
-                string secondName = "John Swell";
-                string secondEnrollmentDate = "Jan 15";
+            string firstName = "John Smith";
+            string firstEnrollmentDate = "Jan 8";
+            Student testStudent = new Student(firstName, firstEnrollmentDate);
+            testStudent.Save();
+            string secondName = "John Swell";
+            string secondEnrollmentDate = "Jan 15";
 
-                //Act
-                testStudent.Edit(secondName, secondEnrollmentDate);
+            //Act
+            testStudent.Update(secondName, secondEnrollmentDate);
 
-                Student result = Student.Find(testStudent.GetId());
+            Student result = Student.Find(testStudent.GetId());
 
-                //Assert
-                Assert.AreEqual(testStudent, result);
+            //Assert
+            Assert.AreEqual(testStudent, result);
         }
 
         [TestMethod]
@@ -148,6 +146,49 @@ namespace UniversityRegistrar.Tests
             Assert.AreEqual(0, Student.GetAll().Count);
 
         }
+
+        [TestMethod]
+        public void AddCourse_AddsCoursetoStudent_CourseList()
+        {
+            //Arrange
+            Student testStudent = new Student ("Heather Miller", "Jan 7");
+            testStudent.Save();
+
+            Course testCourse = new Course ("HomeEc", "HE105");
+            testCourse.Save();
+
+            //Acttest
+            testStudent.AddCourse(testCourse);
+
+            List<Course> result = testStudent.GetCourses();
+            List<Course> testList = new List<Course>{testCourse};
+
+            //Assert
+            CollectionAssert.AreEqual(testList, result);
+        }
+
+        [TestMethod]
+        public void GetCourses_ReturnsAllStudentCourses_CourseList()
+        {
+            //Arrange
+            Student testStudent = new Student("Nan Girzi", "June 30");
+            testStudent.Save();
+
+            Course testCourse1 = new Course("Math", "MATH405");
+            testCourse1.Save();
+
+            Course testCourse2 = new Course("English", "ENG109");
+            testCourse2.Save();
+
+            //Act
+            testStudent.AddCourse(testCourse1);
+            List<Course> result = testStudent.GetCourses();
+            List<Course> testList = new List<Course> {testCourse1};
+
+            //Assert
+            CollectionAssert.AreEqual(testList, result);
+        }
+
 
     }
 }
