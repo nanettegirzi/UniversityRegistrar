@@ -4,10 +4,7 @@ Layout="_Layout";
 
 @using UniversityRegistrar.Models;
 
-<h2>Course Details:</h2>
-<br>
-<br>
-<h2>@Model["course"].GetCourseName() | @Model["course"].GetCourseNumber()</h2>
+<h2>Course Name: @Model["course"].GetCourseName() | Course Number: @Model["course"].GetCourseNumber()</h2>
 <hr />
 @if (@Model["courseStudents"].Count != 0)
 {
@@ -15,7 +12,7 @@ Layout="_Layout";
   <ul>
     @foreach (var student in @Model["courseStudents"])
     {
-      <li>@student.GetName() |  Enrollment Date: @student.GetEnrollmentDate</li>
+      <li>@student.GetName()</li>
     }
   </ul>
 }
@@ -29,6 +26,6 @@ Layout="_Layout";
         <option value='@student.GetId()'>@student.GetName()</option>
       }
     </select>
-    <button type="submit" class="btn btn-secondary btn-active" role="button" aria-pressed="true>">Add</button>
+    <button type="submit" class="btn btn-secondary btn-active" role="button" aria-pressed="true>">Add Student</button>
   </div>
 </form>

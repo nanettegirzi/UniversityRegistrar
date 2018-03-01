@@ -47,7 +47,7 @@ namespace UniversityRegistrar.Controllers
             Course course = Course.Find(courseId);
             Student student = Student.Find(Int32.Parse(Request.Form["student-id"]));
             course.AddStudent(student);
-            return RedirectToAction("Success", "Home");
+            return RedirectToAction("Index");
         }
 
         [HttpGet("/courses/{courseId}/update")]

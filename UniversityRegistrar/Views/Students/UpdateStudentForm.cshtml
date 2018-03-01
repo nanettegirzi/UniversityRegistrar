@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+<hr />
+<h2>Edit Student Details: @Model.GetName()</h2>
+<form action="/students/@Model.GetId()/update" method="post">
+  <label for="new-name">Student Name:</label>
+  <input type="text" name="new-name" value="@Model.GetName()">
+  <label for="new-enrollment-date">Enrollment Date:</label>
+  <input type="text" name="new-enrollment-date" value="@Model.GetEnrollmentDate()">
+  <button type="submit">Update Student Info</button>
+</form>
+<br>
+<h4><a href="/students">Back to Student List</a></h4>

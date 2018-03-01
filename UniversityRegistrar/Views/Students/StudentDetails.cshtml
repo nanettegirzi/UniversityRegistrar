@@ -1,0 +1,31 @@
+@{
+Layout="_Layout";
+}
+
+@using UniversityRegistrar.Models;
+
+<h2>@Model["student"].GetName() | Enrollment Date: @Model["student"].GetEnrollmentDate()</h2>
+<hr />
+@if (@Model["studentCourses"].Count != 0)
+{
+  <h4>@Model["student"].GetName() is enrolled in these courses:</h4>
+  <ul>
+    @foreach (var course in @Model["studentCourses"])
+    {
+      <li>@course.GetCourseName() | Course Number: @course.GetCourseNumber()</li>
+    }
+  </ul>
+}
+<h4>Add a course to this student:</h4>
+<div class="form-group">
+  <form action='/students/@Model["student"].GetId()/courses/new' method='post'>
+    <label for='course-id'>Select a course</label>
+    <select id='course-id' name='course-id' type='text'>
+      @foreach (var course in @Model["allCourses"])
+      {
+        <option value='@course.GetId()'>@course.GetCourseName()</option>
+      }
+    </select>
+    <button type="submit" class="btn btn-secondary btn-active" role="button" aria-pressed="true>">Add Course</button>
+  </div>
+</form>

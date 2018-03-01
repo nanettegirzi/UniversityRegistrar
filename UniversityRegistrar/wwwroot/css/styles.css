@@ -1,23 +1,23 @@
 /* The navigation bar */
-.topnav {
+.navbar {
     overflow: hidden;
     background-color: #333;
-    position: fixed;
+    position: sticky;
     top 0;
-    width: 100%; /* Full width */
-}
+    width: 100%;
+  }
 
 /* Links inside the navbar */
-.topnav a {
+.navbar a {
     float: left;
     color: #f2f2f2;
-    text-align: center;
+    text-align: left;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 /* Change background on mouse-over */
-.topnav a:hover {
+.navbar a:hover {
     background: #ddd;
     color: black;
 }
@@ -26,11 +26,15 @@
   background-color: black;
   text-align: center;
   color: white;
-  padding: 150px 150px 150px 150px;
+  padding: 50px 50px 50px 50px;
 }
 
 body {
   background-color: #EAF2F8;
+}
+
+#jumbo {
+  background-color: white;
 }
 
 a {
