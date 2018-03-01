@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.Models;
+using UniversityRegistrar.Models;
 using System;
 
-namespace ToDoList.Controllers
+namespace UniversityRegistrar.Controllers
 {
     public class HomeController : Controller
     {
@@ -11,8 +11,8 @@ namespace ToDoList.Controllers
         [HttpGet("/")]
         public ActionResult Index()
         {
-            List<Category> allCategories = Category.GetAll();
-            return View(allCategories);
+            List<Course> allCourses= Course.GetAll();
+            return View(allCourses);
         }
 
         [HttpGet("/home/success")]
