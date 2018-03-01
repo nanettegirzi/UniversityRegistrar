@@ -1,0 +1,38 @@
+/* The navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top 0;
+    width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.topnav a:hover {
+    background: #ddd;
+    color: black;
+}
+
+.jumbotron {
+  background-color: black;
+  text-align: center;
+  color: white;
+  padding: 150px 150px 150px 150px;
+}
+
+body {
+  background-color: #EAF2F8;
+}
+
+a {
+  color: black;
+}

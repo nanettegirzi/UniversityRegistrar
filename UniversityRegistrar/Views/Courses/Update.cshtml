@@ -1,1 +1,14 @@
+@{
+  Layout = "_Layout";
+}
 
+<hr />
+<h2>Edit Course Details: @Model.GetCourseName()</h2>
+<form action="/courses/@Model.GetId()/update" method="post">
+  <label for="new-course-name">Course Name:</label>
+  <input type="text" name="new-course-name" value="@Model.GetCourseName()">
+  <label for="new-course-number">Course Number:</label>
+  <input type="text" name="new-course-number" value="@Model.GetCourseNumber()">
+  <button type="submit">Update</button>
+</form>
+<h4><a href="/courses">Back to Course List</a></h4>

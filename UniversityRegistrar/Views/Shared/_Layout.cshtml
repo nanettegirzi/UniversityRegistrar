@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>University of Nano</title>
-    <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
-    <link rel="stylesheet" type="text/css" href="~/css/styles.css"/>
-  </head>
-  <body>
-      <div class="jumbotron">
+<head>
+  <meta charset="utf-8">
+  <title>University of Nano</title>
+  <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+  <link rel="stylesheet" type="text/css" href="~/css/styles.css"/>
+</head>
+<body>
+
+  <div class="topnav">
+    <a href="/">Home</a>
+    <a href="/courses">Courses</a>
+    <a href="/students">Students</a>
+  </div>
+  <div class="jumbotron">
+    <h1><center>University of Nano<center></h1>
+  </div>
+  <div class ="container">
+    <!-- <div class="jumbotron">
       <h1><center>University of Nano<center></h1>
+    </div> -->
+      <!-- <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/courses">Courses</a>
+        <a href="/students">Students</a>
+      </div> -->
     </div>
+
     <br>
     <div class="container">
 
-    @RenderBody()
-   </div>
+      @RenderBody()
+    </div>
   </body>
-</html>
+  </html>
