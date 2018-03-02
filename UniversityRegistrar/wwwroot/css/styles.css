@@ -23,20 +23,26 @@
 }
 
 .jumbotron {
-  background-color: black;
+  background-color: #7a0019;
   text-align: center;
-  color: white;
+  color: #ffcc33;
   padding: 50px 50px 50px 50px;
-}
-
-body {
-  background-color: #EAF2F8;
 }
 
 #jumbo {
   background-color: white;
 }
 
+body {
+  background-color: #EAF2F8;
+}
+
 a {
   color: black;
+}
+
+.card-img {
+   width: 100%;
+   padding: 0px;
+   height: 100%;
 }

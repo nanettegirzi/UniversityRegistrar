@@ -1,7 +1,7 @@
 @{
   Layout = "_Layout";
 }
-
+<div class="container-fluid">
 <hr />
 <h2>Edit Course Details: @Model.GetCourseName()</h2>
 <form action="/courses/@Model.GetId()/update" method="post">
@@ -12,3 +12,4 @@
   <button type="submit">Update</button>
 </form>
 <h4><a href="/courses">Back to Course List</a></h4>
+</div>

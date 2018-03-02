@@ -4,6 +4,7 @@ Layout="_Layout";
 
 @using UniversityRegistrar.Models;
 
+<div class="container-fluid">
 <h2>@Model["student"].GetName() | Enrollment Date: @Model["student"].GetEnrollmentDate()</h2>
 <hr />
 @if (@Model["studentCourses"].Count != 0)
@@ -29,3 +30,4 @@ Layout="_Layout";
     <button type="submit" class="btn btn-secondary btn-active" role="button" aria-pressed="true>">Add Course</button>
   </div>
 </form>
+</div>
